@@ -6,7 +6,7 @@ With the paginify library, your model can implement offset pagination. This is s
 
 ## High Flow
 
-Offset pagination overview: :
+Offset pagination overview :
 ![Logo Ruby](https://github.com/solehudinmq/paginify/blob/development/high_flow/Paginify.jpg)
 
 ## Installation
