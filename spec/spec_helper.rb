@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "paginify"
+require 'byebug'
+require_relative '../example/test/post'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

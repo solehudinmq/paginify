@@ -8,11 +8,11 @@ Gem::Specification.new do |spec|
   spec.authors = ["SolehMQ"]
   spec.email = ["solehudinmq@gmail.com"]
 
-  spec.summary = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description = "TODO: Write a longer description or delete this line."
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.summary = "Paginify is a Ruby ​​library that implements offset pagination, where the advantage of this type of pagination is that it can flexibly get data on the desired page."
+  spec.description = "With the paginify library, your model can implement offset pagination. This is suitable for smaller data scales, as the deeper the offset, the slower the performance."
+  spec.homepage = "https://github.com/solehudinmq/paginify"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.2.0"
+  spec.required_ruby_version = ">= 3.0.0"
 
   spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
   spec.metadata["homepage_uri"] = spec.homepage
