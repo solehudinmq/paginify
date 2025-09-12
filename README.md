@@ -1,28 +1,125 @@
 # Paginify
 
-TODO: Delete this and the text below, and describe your gem
+Paginify is a Ruby ​​library that implements offset pagination, where the advantage of this type of pagination is that it can flexibly get data on the desired page.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/paginify`. To experiment with that code, run `bin/console` for an interactive prompt.
+With the paginify library, your model can implement offset pagination. This is suitable for smaller data scales, as the deeper the offset, the slower the performance.
+
+## High Flow
+
+Offset pagination overview: :
+![Logo Ruby](https://github.com/solehudinmq/paginify/blob/development/high_flow/Paginify.jpg)
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+The minimum version of Ruby that must be installed is 3.0.
+Only runs on activerecord.
 
-Install the gem and add to the application's Gemfile by executing:
+Add this line to your application's Gemfile :
 
-```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+```ruby
+gem 'paginify', git: 'git@github.com:solehudinmq/paginify.git', branch: 'main'
 ```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
-
+Open terminal, and run this : 
 ```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+cd your_ruby_application
+bundle install
+```
+
+To improve pagination performance, add an index to the table that will use the pagination offset. For example :
+```bash
+CREATE INDEX index_posts_on_posts_created_at ON posts (created_at);
 ```
 
 ## Usage
 
-TODO: Write usage instructions here
+In the model that will implement cursor pagination add this :
+```ruby
+require 'paginify'
+
+class Post < ActiveRecord::Base
+  include Paginify
+end
+```
+
+How to use offset pagination :
+```ruby
+posts = Post.offset_paginate(page: params[:page], limit: params[:limit], order_by: params[:order_by])
+```
+
+Parameter description :
+- page (optional) = is the page from which you want to retrieve data. Example : 1
+- limit (optional) = is the amount of data you want to retrieve. Example : 10
+- order_by (optional) = is to order the data in ascending/descending order. Example : 'asc' / 'desc'
+
+Example of usage in your application :
+```ruby
+require 'sinatra'
+require 'json'
+require_relative 'post'
+
+# Route to fetch posts data with offset pagination
+get '/posts' do
+  begin
+    posts = Post.offset_paginate(page: params[:page], limit: params[:limit], order_by: params[:order_by])
+
+    content_type :json
+    posts.to_json
+  rescue => e
+    content_type :json
+    status 500
+    return { error: e.message }.to_json
+  end
+end
+```
+
+Example of offset pagination response : 
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "title": "Post 15 Name",
+            "content": "Post 15 Content",
+            "created_at": "2025-09-12T02:04:29.034Z",
+            "updated_at": "2025-09-12T02:04:29.034Z"
+        },
+        {
+            "id": 2,
+            "title": "Post 14 Name",
+            "content": "Post 14 Content",
+            "created_at": "2025-09-12T02:04:29.144Z",
+            "updated_at": "2025-09-12T02:04:29.144Z"
+        },
+        {
+            "id": 3,
+            "title": "Post 13 Name",
+            "content": "Post 13 Content",
+            "created_at": "2025-09-12T02:04:29.246Z",
+            "updated_at": "2025-09-12T02:04:29.246Z"
+        },
+        {
+            "id": 4,
+            "title": "Post 12 Name",
+            "content": "Post 12 Content",
+            "created_at": "2025-09-12T02:04:29.347Z",
+            "updated_at": "2025-09-12T02:04:29.347Z"
+        },
+        {
+            "id": 5,
+            "title": "Post 11 Name",
+            "content": "Post 11 Content",
+            "created_at": "2025-09-12T02:04:29.447Z",
+            "updated_at": "2025-09-12T02:04:29.447Z"
+        }
+    ],
+    "metadata": {
+        "page": 1,
+        "limit": 5
+    }
+}
+```
+
 
 ## Development
 
@@ -32,7 +129,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/paginify.
+Bug reports and pull requests are welcome on GitHub at https://github.com/solehudinmq/paginify.
 
 ## License
 
