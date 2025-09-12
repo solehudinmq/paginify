@@ -27,6 +27,7 @@ RSpec.describe Paginify do
 
     expect(posts[:metadata][:page]).to be 1
     expect(posts[:metadata][:limit]).to be 10
+    expect(posts[:metadata][:total_page]).to be 2
   end
 
   it "return 5 data and sorted asc by default" do
@@ -41,6 +42,7 @@ RSpec.describe Paginify do
 
     expect(posts[:metadata][:page]).to be 1
     expect(posts[:metadata][:limit]).to be 5
+    expect(posts[:metadata][:total_page]).to be 3
 
     # page 2
     posts2 = Post.offset_paginate(page: 2, limit: 5)
@@ -53,6 +55,7 @@ RSpec.describe Paginify do
 
     expect(posts2[:metadata][:page]).to be 2
     expect(posts2[:metadata][:limit]).to be 5
+    expect(posts2[:metadata][:total_page]).to be 3
 
     # page 3
     posts3 = Post.offset_paginate(page: 3, limit: 5)
@@ -65,6 +68,7 @@ RSpec.describe Paginify do
 
     expect(posts3[:metadata][:page]).to be 3
     expect(posts3[:metadata][:limit]).to be 5
+    expect(posts3[:metadata][:total_page]).to be 3
   end
 
   it "return 5 data and sorted asc" do
@@ -79,6 +83,7 @@ RSpec.describe Paginify do
 
     expect(posts[:metadata][:page]).to be 1
     expect(posts[:metadata][:limit]).to be 5
+    expect(posts[:metadata][:total_page]).to be 3
 
     # page 2
     posts2 = Post.offset_paginate(page: 2, limit: 5)
@@ -91,6 +96,7 @@ RSpec.describe Paginify do
 
     expect(posts2[:metadata][:page]).to be 2
     expect(posts2[:metadata][:limit]).to be 5
+    expect(posts2[:metadata][:total_page]).to be 3
 
     # page 3
     posts3 = Post.offset_paginate(page: 3, limit: 5)
@@ -103,6 +109,7 @@ RSpec.describe Paginify do
 
     expect(posts3[:metadata][:page]).to be 3
     expect(posts3[:metadata][:limit]).to be 5
+    expect(posts3[:metadata][:total_page]).to be 3
   end
 
   it "return 5 data and sorted desc" do
@@ -117,6 +124,7 @@ RSpec.describe Paginify do
 
     expect(posts[:metadata][:page]).to be 1
     expect(posts[:metadata][:limit]).to be 5
+    expect(posts[:metadata][:total_page]).to be 3
 
     # page 2
     posts2 = Post.offset_paginate(page: 2, limit: 5, order_by: 'desc')
@@ -129,6 +137,7 @@ RSpec.describe Paginify do
 
     expect(posts2[:metadata][:page]).to be 2
     expect(posts2[:metadata][:limit]).to be 5
+    expect(posts2[:metadata][:total_page]).to be 3
 
     # page 3
     posts3 = Post.offset_paginate(page: 3, limit: 5, order_by: 'desc')
@@ -141,6 +150,7 @@ RSpec.describe Paginify do
 
     expect(posts3[:metadata][:page]).to be 3
     expect(posts3[:metadata][:limit]).to be 5
+    expect(posts3[:metadata][:total_page]).to be 3
   end
 
   it "return empty data" do
@@ -151,5 +161,6 @@ RSpec.describe Paginify do
 
     expect(posts[:metadata][:page]).to be 10
     expect(posts[:metadata][:limit]).to be 5
+    expect(posts[:metadata][:total_page]).to be 3
   end
 end

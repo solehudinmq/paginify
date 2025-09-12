@@ -115,7 +115,8 @@ Example of offset pagination response :
     ],
     "metadata": {
         "page": 1,
-        "limit": 5
+        "limit": 5,
+        "total_page": 3
     }
 }
 ```

@@ -13,20 +13,23 @@ module Paginify extend ActiveSupport::Concern
       page ||= 1
       limit ||= 10
       order_by ||= 'asc'
-      puts "page : #{page}, limit : #{limit}, order_by: #{order_by}"
-
+      
       page = page.to_i
       limit = limit.to_i
 
       # Validation for order_by parameter value
       OrderByValidator.validate(order_by)
 
+      data = self.order(created_at: order_by)
+      total_page = (data.count.to_f / limit).ceil
+
       # get offset position
       offset = (page - 1) * limit
-      # get data based on offset position
-      data = self.limit(limit).offset(offset).order(created_at: order_by)
 
-      { data: data, metadata: { page: page, limit: limit } }
+      # get data based on offset position
+      data = data.limit(limit).offset(offset)
+
+      { data: data, metadata: { page: page, limit: limit, total_page: total_page } }
     end
   end
 end
