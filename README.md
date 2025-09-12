@@ -26,7 +26,7 @@ cd your_ruby_application
 bundle install
 ```
 
-To improve pagination performance, add an index to the table that will use the pagination offset. For example :
+To improve pagination performance, add an index to the table that will use the pagination offset. For example in Postgresql :
 ```bash
 CREATE INDEX index_posts_on_posts_created_at ON posts (created_at);
 ```
