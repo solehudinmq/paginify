@@ -28,6 +28,12 @@ bundle install
 
 To improve pagination performance, add an index to the table that will use the pagination offset. For example in Postgresql :
 ```bash
+CREATE INDEX index_your_table_on_created_at ON your_table (created_at);
+```
+
+Example : 
+
+```bash
 CREATE INDEX index_posts_on_posts_created_at ON posts (created_at);
 ```
 
@@ -37,14 +43,14 @@ In the model that will implement cursor pagination add this :
 ```ruby
 require 'paginify'
 
-class Post < ActiveRecord::Base
+class YourModel < ActiveRecord::Base
   include Paginify
 end
 ```
 
 How to use offset pagination :
 ```ruby
-posts = Post.offset_paginate(page: params[:page], limit: params[:limit], order_by: params[:order_by])
+result = YourModel.offset_paginate(page: params[:page], limit: params[:limit], order_by: params[:order_by])
 ```
 
 Parameter description :
@@ -54,6 +60,17 @@ Parameter description :
 
 Example of usage in your application :
 ```ruby
+# post.rb
+require 'paginify'
+
+class Post < ActiveRecord::Base
+  include Paginify
+end
+```
+
+
+```ruby
+# app.rb
 require 'sinatra'
 require 'json'
 require_relative 'post'
