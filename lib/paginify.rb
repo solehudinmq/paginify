@@ -5,9 +5,6 @@ require_relative 'paginify/strategies/order_by_validator'
 require 'active_support/concern'
 
 module Paginify extend ActiveSupport::Concern
-  class Error < StandardError; end
-  # Your code goes here...
-
   class_methods do
     def offset_paginate(page: nil, limit: nil, order_by: nil)
       page ||= 1
