@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "paginify/version"
-require_relative 'paginify/strategies/order_by_validator'
+require_relative 'paginify/validator/order_by_validator'
 require 'active_support/concern'
 
 module Paginify extend ActiveSupport::Concern
