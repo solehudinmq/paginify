@@ -19,7 +19,7 @@ get '/posts' do
 end
 
 # Route to enter dummy data
-get '/seed' do
+post '/seed' do
   # Delete old data and enter new data
   Post.destroy_all
   15.times do |i|
@@ -33,5 +33,5 @@ end
 # cd your_project
 # bundle install
 # bundle exec ruby app.rb
-# curl --location 'http://localhost:4567/seed' // untuk create dummy data
+# curl --location --request POST 'http://localhost:4567/seed' // untuk create dummy data
 # curl --location 'http://localhost:4567/posts?page=1&limit=5&order_by=asc' // untuk dapat halaman 1

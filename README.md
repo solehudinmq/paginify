@@ -59,19 +59,62 @@ Parameter description :
 - order_by (optional) = is to order the data in ascending/descending order. Example : 'asc' / 'desc'
 
 Example of usage in your application :
+- Gemfile : 
+```ruby
+# Gemfile
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+gem "byebug"
+gem "sinatra"
+gem "activerecord"
+gem "sqlite3"
+gem "rackup", "~> 2.2"
+gem "puma", "~> 7.0"
+gem 'paginify', git: 'git@github.com:solehudinmq/paginify.git', branch: 'main'
+```
+
+- post.rb
 ```ruby
 # post.rb
+require 'sinatra'
+require 'active_record'
+require 'byebug'
 require 'paginify'
 
+# Configure database connections
+ActiveRecord::Base.establish_connection(
+  adapter: 'sqlite3',
+  database: 'db/development.sqlite3'
+)
+
+# Create a db directory if it doesn't exist yet
+Dir.mkdir('db') unless File.directory?('db')
+
+# Model
 class Post < ActiveRecord::Base
   include Paginify
 end
+
+# Migration to create posts table
+ActiveRecord::Schema.define do
+  unless ActiveRecord::Base.connection.table_exists?(:posts)
+    create_table :posts do |t|
+      t.string :title
+      t.string :content
+      t.timestamps
+    end
+  end
+end
 ```
 
+- app.rb : 
 ```ruby
 # app.rb
 require 'sinatra'
 require 'json'
+require 'byebug'
 require_relative 'post'
 
 # Route to fetch posts data with offset pagination
@@ -87,6 +130,24 @@ get '/posts' do
     return { error: e.message }.to_json
   end
 end
+
+# Route to enter dummy data
+post '/seed' do
+  # Delete old data and enter new data
+  Post.destroy_all
+  15.times do |i|
+    Post.create(title: "Post #{15-i} Name", content:  "Post #{15-i} Content")
+    sleep(0.1) # Add a gap to make the created_at different
+  end
+  'Database seeded with 15 posts.'
+end
+
+# open terminal
+# cd your_project
+# bundle install
+# bundle exec ruby app.rb
+# curl --location --request POST 'http://localhost:4567/seed' // untuk create dummy data
+# curl --location 'http://localhost:4567/posts?page=1&limit=5&order_by=asc' // untuk dapat halaman 1
 ```
 
 Example of offset pagination response : 
