@@ -59,7 +59,6 @@ Parameter description :
 - order_by (optional) = is to order the data in ascending/descending order. Example : 'asc' / 'desc'
 
 Example of usage in your application :
-- Gemfile : 
 ```ruby
 # Gemfile
 # frozen_string_literal: true
@@ -75,7 +74,6 @@ gem "puma", "~> 7.0"
 gem 'paginify', git: 'git@github.com:solehudinmq/paginify.git', branch: 'main'
 ```
 
-- post.rb
 ```ruby
 # post.rb
 require 'sinatra'
@@ -109,7 +107,6 @@ ActiveRecord::Schema.define do
 end
 ```
 
-- app.rb : 
 ```ruby
 # app.rb
 require 'sinatra'
