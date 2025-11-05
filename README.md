@@ -43,7 +43,7 @@ To improve pagination performance, add an index to the table that will use the p
 CREATE INDEX index_your_table_on_created_at ON your_table (created_at);
 ```
 
-For more details, you can see the following example : [example/post_index.txt](Here).
+For more details, you can see the following example : [example/post_index.txt](https://github.com/solehudinmq/paginify/blob/development/example/post_index.txt).
 
 ## Usage
 
@@ -57,7 +57,7 @@ class YourModel < ActiveRecord::Base
 end
 ```
 
-For more details, you can see the following example : [example/post.rb](Here).
+For more details, you can see the following example : [example/post.rb](https://github.com/solehudinmq/paginify/blob/development/example/post.rb).
 
 How to use offset pagination :
 
@@ -70,15 +70,15 @@ Parameter description :
 - limit (optional) = is the amount of data you want to retrieve. Example : 10
 - order_by (optional) = is to order the data in ascending/descending order. Example : 'asc' / 'desc'
 
-For more details, you can see the following example : [example/app.rb](Here).
+For more details, you can see the following example : [example/app.rb](https://github.com/solehudinmq/paginify/blob/development/example/app.rb).
 
 ## Example Implementation in Your Application
 
-For examples of applications that use this gem, you can see them here : [example](Here).
+For examples of applications that use this gem, you can see them here : [example](https://github.com/solehudinmq/paginify/tree/development/example).
 
 ## Example of Offset Pagination Response
 
-For examples of applications that use this gem, you can see them here : [response.json](Here).
+For examples of applications that use this gem, you can see them here : [example/response.json](https://github.com/solehudinmq/paginify/blob/development/example/response.json).
 
 ## Contributing
 
