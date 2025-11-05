@@ -1,0 +1,44 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "title": "Post 15 Name",
+            "content": "Post 15 Content",
+            "created_at": "2025-09-12T02:04:29.034Z",
+            "updated_at": "2025-09-12T02:04:29.034Z"
+        },
+        {
+            "id": 2,
+            "title": "Post 14 Name",
+            "content": "Post 14 Content",
+            "created_at": "2025-09-12T02:04:29.144Z",
+            "updated_at": "2025-09-12T02:04:29.144Z"
+        },
+        {
+            "id": 3,
+            "title": "Post 13 Name",
+            "content": "Post 13 Content",
+            "created_at": "2025-09-12T02:04:29.246Z",
+            "updated_at": "2025-09-12T02:04:29.246Z"
+        },
+        {
+            "id": 4,
+            "title": "Post 12 Name",
+            "content": "Post 12 Content",
+            "created_at": "2025-09-12T02:04:29.347Z",
+            "updated_at": "2025-09-12T02:04:29.347Z"
+        },
+        {
+            "id": 5,
+            "title": "Post 11 Name",
+            "content": "Post 11 Content",
+            "created_at": "2025-09-12T02:04:29.447Z",
+            "updated_at": "2025-09-12T02:04:29.447Z"
+        }
+    ],
+    "metadata": {
+        "page": 1,
+        "limit": 5,
+        "total_page": 3
+    }
+}
