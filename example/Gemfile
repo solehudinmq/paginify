@@ -6,9 +6,8 @@ source "https://rubygems.org"
 
 gem "byebug"
 gem "sinatra"
-gem "activerecord"
 gem "sqlite3"
 gem "rackup", "~> 2.2"
 gem "puma", "~> 7.0"
-# gem 'paginify', path: '../paginify' # for test in localhost
+# gem 'paginify', path: '../' # for test in localhost
 gem 'paginify', git: 'git@github.com:solehudinmq/paginify.git', branch: 'main'
