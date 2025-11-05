@@ -62,7 +62,7 @@ For more details, you can see the following example : [example/post.rb](https://
 How to use offset pagination :
 
 ```ruby
-result = YourModel.offset_paginate(page: params[:page], limit: params[:limit], order_by: params[:order_by])
+result = YourModel.offset_paginate(page: page, limit: limit, order_by: order_by)
 ```
 
 Parameter description :
