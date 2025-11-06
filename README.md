@@ -76,6 +76,14 @@ For more details, you can see the following example : [example/app.rb](https://g
 
 For examples of applications that use this gem, you can see them here : [example](https://github.com/solehudinmq/paginify/tree/development/example).
 
+## Example of Calling the API with Curl
+
+- Example of getting data based on page : 
+
+```bash
+curl --location 'http://localhost:4567/posts?page=1&limit=5&order_by=asc'
+```
+
 ## Example of Offset Pagination Response
 
 For examples of applications that use this gem, you can see them here : [example/response.json](https://github.com/solehudinmq/paginify/blob/development/example/response.json).
