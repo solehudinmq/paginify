@@ -8,7 +8,7 @@ With the paginify library, your model can implement offset pagination. This is s
 
 Offset pagination overview :
 
-![Logo Ruby](https://github.com/solehudinmq/paginify/blob/development/high_flow/Paginify.jpg)
+![Logo Ruby](./high_flow/Paginify.jpg)
 
 ## Requirement
 
@@ -43,7 +43,7 @@ To improve pagination performance, add an index to the table that will use the p
 CREATE INDEX index_your_table_on_created_at ON your_table (created_at);
 ```
 
-For more details, you can see the following example : [example/post_index.txt](https://github.com/solehudinmq/paginify/blob/development/example/post_index.txt).
+For more details, you can see the following example : [example/post_index.txt](./example/post_index.txt).
 
 ## Usage
 
@@ -57,7 +57,7 @@ class YourModel < ActiveRecord::Base
 end
 ```
 
-For more details, you can see the following example : [example/post.rb](https://github.com/solehudinmq/paginify/blob/development/example/post.rb).
+For more details, you can see the following example : [example/post.rb](./example/post.rb).
 
 How to use offset pagination :
 
@@ -70,11 +70,11 @@ Parameter description :
 - limit (optional) = is the amount of data you want to retrieve. Example : 10
 - order_by (optional) = is to order the data in ascending/descending order. Example : 'asc' / 'desc'
 
-For more details, you can see the following example : [example/app.rb](https://github.com/solehudinmq/paginify/blob/development/example/app.rb).
+For more details, you can see the following example : [example/app.rb](./example/app.rb).
 
 ## Example Implementation in Your Application
 
-For examples of applications that use this gem, you can see them here : [example](https://github.com/solehudinmq/paginify/tree/development/example).
+For examples of applications that use this gem, you can see them here : [example](./example).
 
 ## Example of Calling the API with Curl
 
@@ -86,7 +86,7 @@ curl --location 'http://localhost:4567/posts?page=1&limit=5&order_by=asc'
 
 ## Example of Offset Pagination Response
 
-For examples of applications that use this gem, you can see them here : [example/response.json](https://github.com/solehudinmq/paginify/blob/development/example/response.json).
+For examples of applications that use this gem, you can see them here : [example/response.json](./example/response.json).
 
 ## Contributing
 
